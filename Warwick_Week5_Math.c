@@ -17,7 +17,7 @@ main()
 	char lvl;
 	int aNum1, aNum2, ttlProblems, correctAnswers, count;
 	float percent;
-	
+	// menu used to ask what the user wants to practice
 	printf("Math Practice Program Main Menu \n\n");
 	printf("1. Addition \n");
 	printf("2. Subtraction\n");
@@ -29,7 +29,7 @@ main()
 	
 	while(menu!=1 && menu!=2 && menu!=3 && menu!=4 && menu!=5)
 	{
-		printf("Please enter a number 1 through 5: ");
+		printf("Please enter a number 1 through 5: ");	//menu navigation
 		scanf("%d", &menu);
 	}
 
@@ -38,7 +38,7 @@ main()
 	
 	while(menu != 5)
 	{
-		printf("Select difficulty level(e-easy, m-medium, h-hard): ");
+		printf("Select difficulty level(e-easy, m-medium, h-hard): ");	// deciding the difficulty of the problem
 		scanf(" %c", &lvl);
 		
 		while(lvl != 'e' && lvl != 'm' && lvl != 'h')
@@ -92,7 +92,7 @@ main()
 			scanf("%d", &menu);
 		}
 		
-		if(menu==5)
+		if(menu==5) // This is the  output for the solutions completed
 		{
 			percent = (float)correctAnswers / ttlProblems * 100;
 			printf("You have attempted %d problems and got %d correct.\n", ttlProblems, correctAnswers);
@@ -122,7 +122,7 @@ int Addition(int aNum1, int aNum2)
 	}
 	else
 	{
-		while(aAnswer!=aNum1+aNum2 && counter!=3)
+		while(aAnswer!=aNum1+aNum2 && counter!=3) //giving 3 tries for each problem attempted
 		{
 			printf("This answer is incorrect. \n");
 			printf("Please try again.  \n");
@@ -130,7 +130,7 @@ int Addition(int aNum1, int aNum2)
 			scanf("%d", &aAnswer);
 			counter++;
 		}
-		if(aAnswer==aNum1+aNum2)
+		if(aAnswer==aNum1+aNum2) // after the thrid try it will send the user back to the menu. 
 		{
 			printf("This answer is correct. \n\n");
 			count=1;
@@ -226,13 +226,13 @@ int Multiplication(int aNum1, int aNum2)
 }
 
 
-int Division(int aNum1, int aNum2, char lvl)
+int Division(int aNum1, int aNum2, char lvl) // division was difficult due to the remainder. Got it to work in the end. 
 {
 	int aAnswer, aAnswer2, count, counter;
 	
 	counter=1;
 
-	while(aNum1 < aNum2)
+	while(aNum1 < aNum2) // this is to correct an impossible division (by 0), or decimals.
 	{
 		aNum1=random(lvl);
 		aNum2=random(lvl);
@@ -275,7 +275,7 @@ int Division(int aNum1, int aNum2, char lvl)
 	return count;
 }
 
-int random(char lvl)
+int random(char lvl) // this is to randomize the problems, as much as you can with the rand() function
 {
 	int aNum1, aNum2;
 	
@@ -297,5 +297,5 @@ int random(char lvl)
 		
 		aNum2=rand()%1000+1;
 	}
-	return aNum1, aNum2;
+	return aNum1, aNum2; // the randomized numbers should be used in every module
 }
